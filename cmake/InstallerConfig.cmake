@@ -1,5 +1,3 @@
-# cmake/InstallerConfig.cmake
-
 # Installation configuration
 include(GNUInstallDirs)
 
@@ -12,14 +10,17 @@ else()
     set(ARCH ${CMAKE_SYSTEM_PROCESSOR})
 endif()
 
-# Install targets with proper naming and symlinks
-install(TARGETS poktroll_clients
-        LIBRARY
+# Install the Go shared library directly
+install(FILES ${CLIENTS_SHARED_LIB}.${LIB_EXTENSION}
         DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        NAMELINK_SKIP
-        PUBLIC_HEADER
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/poktroll
+        RENAME libpoktroll_clients.${LIB_EXTENSION}
         COMPONENT library
+)
+
+# Install headers
+install(FILES ${CMAKE_SOURCE_DIR}/include/context.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/poktroll
+        COMPONENT headers
 )
 
 # Install the Go shared library with proper naming

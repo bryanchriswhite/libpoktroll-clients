@@ -142,10 +142,10 @@ make package  # ALL
 #  - build/libpoktroll_clients-<version>-<arch>-darwin.tar.gz
 
 ## OR
-cpack -G "productbuild;TGZ;STGZ"  # All
-cpack -G productbuild            # MacOS .pkg
-cpack -G STGZ                    # Self-extracting tar.gz
-cpack -G TGZ                     # tar.gz
+cpack -T "productbuild;TGZ;STGZ"  # All
+cpack -T productbuild            # MacOS .pkg
+cpack -T STGZ                    # Self-extracting tar.gz
+cpack -T TGZ                     # tar.gz
 ```
 
 ## Cross-compiling from (arch) linux
